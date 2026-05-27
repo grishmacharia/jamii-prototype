@@ -1,6 +1,9 @@
-import React,{useState} from 'react';
-import {Home,Map,Radio,BarChart3,User,Plus,Heart,MessageCircle,Share2} from 'lucide-react';
-const demoFeed=[{name:'Mary from Mavuria',avatar:'M',issue:'Broken borehole. Families walking 3km for water.',confirms:82,comments:14,tag:'Water',time:'2h ago',image:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80'}];
-function Shell({activeTab,setActiveTab,children}){return <div className="min-h-screen bg-[#F8F3EA] flex justify-center p-4"><div className="w-full max-w-sm h-[900px] bg-white rounded-[36px] shadow-2xl overflow-hidden relative flex flex-col"><div className="flex-1 overflow-y-auto p-5 pb-28">{children}</div><button onClick={()=>setActiveTab('report')} className="absolute bottom-24 right-5 w-16 h-16 rounded-full bg-[#F05A28] text-white flex items-center justify-center"><Plus/></button><div className="h-20 border-t bg-white flex items-center justify-around"><Home onClick={()=>setActiveTab('home')}/><Map onClick={()=>setActiveTab('map')}/><BarChart3 onClick={()=>setActiveTab('pulse')}/><Radio onClick={()=>setActiveTab('live')}/><User onClick={()=>setActiveTab('profile')}/></div></div></div>}
-export default function App(){const [screen,setScreen]=useState('splash'); const [activeTab,setActiveTab]=useState('home'); if(screen==='splash') return <div className="min-h-screen bg-gradient-to-b from-[#F05A28] to-[#E86A24] flex justify-center items-center text-white"><div className="text-center"><h1 className="text-5xl font-black">JAMII</h1><p>MBEERE SOUTH</p><button onClick={()=>setScreen('home')} className="mt-8 bg-white text-[#F05A28] px-8 py-4 rounded-2xl font-bold">ENTER JAMII</button></div></div>;
-return <Shell activeTab={activeTab} setActiveTab={setActiveTab}>{activeTab==='home'?<><div className="rounded-3xl overflow-hidden relative mb-5 h-56"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" className="w-full h-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-black to-transparent p-5 flex flex-col justify-end text-white"><h2 className="text-2xl font-black">Water Crisis Townhall — Kiambere</h2></div></div>{demoFeed.map((item,i)=><div key={i} className="border rounded-3xl overflow-hidden bg-white"><img src={item.image} className="w-full h-40 object-cover"/><div className="p-4"><h4 className="font-bold">{item.name}</h4><p>{item.issue}</p><div className="flex justify-between mt-4 text-sm"><div className="flex gap-1 items-center"><Heart size={16}/>{item.confirms}</div><div className="flex gap-1 items-center"><MessageCircle size={16}/>{item.comments}</div><div className="flex gap-1 items-center"><Share2 size={16}/>Share</div></div></div></div>)}</>:<h2 className="text-2xl font-black">{activeTab.toUpperCase()}</h2>}</Shell>}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #F8F3EA;
+}
+
+* {
+  box-sizing: border-box;
+}
